@@ -1,0 +1,14 @@
+<div class = 'flash-notice'>
+    <%= flash[:notice] %>
+</div>
+<h3 class='tag'>Title:</h3>
+<span><%= @list.title %></span>
+
+<h3 class='tag'>Body:</h3><span><%= @list.body %></span>
+
+
+
+
+<P class='link'><%= link_to 'edit',edit_book_path(params[:id]) %>|<%= link_to 'back',books_path %></p>
+
+

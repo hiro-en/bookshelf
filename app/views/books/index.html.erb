@@ -1,0 +1,56 @@
+<div class="wrapper">
+  <h1 class='index-title'>Books</h1>
+
+
+   
+   
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Body</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% @list.each do |content| %>
+      <tr>
+        <td><%= content.title %></td>
+        <td><%= content.body %></td>
+        <td><%= link_to 'Show',book_path(content.id) %></td>
+        <td><%= link_to 'Edit', edit_book_path(content.id) %></td>
+        <td><%= link_to 'Destroy', book_path(content.id), method: :delete, "data-confirm" => "本当に削除しますか" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+ 
+
+
+  <div class='error'>
+    <% if @list_create.errors.any? %>
+      <h4 class='errors-count'><%= @list_create.errors.count %>error prohibited this book from being saved:</h4>
+      <ul class='error-message'>
+        <% @list_create.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class="register">
+    <h2 class='regi-title'>New book</h2>
+    <%= form_with model: @list, url: '/books', method: :post do |form| %>
+
+    <h4 class='form-title'>Title</h4>
+    <span><%= form.text_field :title %></span>
+
+    <h4 class='form-title'>Body</h4>
+    <%= form.text_area :body %>
+
+    <p><%= form.submit'Create Book' %></p>
+
+    <% end %>
+
+  </div>
+</div>
